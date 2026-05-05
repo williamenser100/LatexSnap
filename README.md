@@ -32,29 +32,29 @@ git clone https://github.com/williamenser100/LatexSnap.git
 cd LatexSnap
 ```
 
-### 2) One-time signing setup
+### 2) Build and deploy
 
-Create a stable local self-signed certificate used for repeatable local installs:
-
-```bash
-./setup_signing.sh
-```
-
-### 3) Build and deploy
-
-Builds the app, copies it to `/Applications/LatexSnap.app`, and signs it:
+`build.sh` builds the **Debug** configuration (same as a normal Xcode build), then copies that exact app bundle to `/Applications/LatexSnap.app` with `ditto`. It **does not re-sign** the app: macOS Screen Recording (TCC) is tied to code identity, so the `/Applications` copy stays identical to the Debug product under Derived Data.
 
 ```bash
 ./build.sh
 ```
 
-### 4) Launch
+If you previously granted Screen Recording to a **different** LatexSnap build (for example after an old workflow re-signed the app), reset once and allow again for the current copy:
+
+```bash
+tccutil reset ScreenCapture com.latexsnap.app
+```
+
+### 3) Launch
 
 Open `/Applications/LatexSnap.app`.
 
 On first run:
-- Grant Screen Recording when prompted
-- Open **Settings...** from the menu bar icon and paste your Anthropic API key
+- When macOS asks to allow screen capture / bypass the system picker, choose **Allow** (or enable LatexSnap under **Privacy & Security → Screen & System Audio Recording**)
+- Open **Settings…** from the menu bar and paste your Anthropic API key
+
+Optional: `setup_signing.sh` remains in the repo for older experiments but **`build.sh` does not use it**.
 
 ## How To Use
 
@@ -123,11 +123,12 @@ LatexSnap/
   - Confirm Screen Recording permission is enabled for LatexSnap in:
     - System Settings -> Privacy & Security -> Screen & System Audio Recording
   - Restart the app after changing permissions
+  - If permission works for the Debug app in Derived Data but not `/Applications`, run `./build.sh` again (no re-sign) and, if needed, `tccutil reset ScreenCapture com.latexsnap.app` then re-allow
 
 - **API errors**
   - Check key format in Settings
   - Confirm your Anthropic account and quota are active
   - Open **Show Log...** for HTTP status and error details
 
-- **Signing certificate not found**
-  - Run `./setup_signing.sh` once, then retry `./build.sh`
+- **Spotlight shows two LatexSnap apps**
+  - One is usually `/Applications/LatexSnap.app`; the other is the Debug product under Xcode’s Derived Data. After `./build.sh`, prefer the Applications copy; they should match the same signing profile.
