@@ -18,10 +18,12 @@ When conversion succeeds, the LaTeX is copied directly to your clipboard.
 ## Requirements
 
 - macOS 14.0 or newer
-- Xcode 15+ command line tools
-- An Anthropic API key
-- Permission to grant:
-  - Screen Recording
+- **Xcode** (full app from the App Store or Apple Developer), not Command Line Tools alone — `build.sh` runs `xcodebuild` and the project uses SwiftUI, ScreenCaptureKit, and asset catalogs.
+- An Anthropic API key ([Anthropic Console](https://console.anthropic.com))
+- Permission to grant **Screen & System Audio Recording** for LatexSnap (macOS will prompt; screen images are sent to the API)
+- Ability to write to `/Applications` (normal on a personal Mac; some managed Macs may restrict this)
+
+There is no prebuilt `.dmg` or App Store build in this repo: you install by cloning and running the script below.
 
 ## Quick Start
 
@@ -30,6 +32,7 @@ When conversion succeeds, the LaTeX is copied directly to your clipboard.
 ```bash
 git clone https://github.com/williamenser100/LatexSnap.git
 cd LatexSnap
+chmod +x build.sh
 ```
 
 ### 2) Build and deploy
@@ -48,7 +51,9 @@ tccutil reset ScreenCapture com.latexsnap.app
 
 ### 3) Launch
 
-Open `/Applications/LatexSnap.app`.
+Open `/Applications/LatexSnap.app` (from Finder or `open -a LatexSnap`).
+
+LatexSnap is a **menu bar app** (`LSUIElement`): there is **no Dock icon**. After launch, look for the **Ξ** icon in the menu bar (top right).
 
 On first run:
 - When macOS asks to allow screen capture / bypass the system picker, choose **Allow** (or enable LatexSnap under **Privacy & Security → Screen & System Audio Recording**)
