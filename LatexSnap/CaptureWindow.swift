@@ -4,11 +4,17 @@ import ScreenCaptureKit
 class CaptureWindow: NSWindow {
     private var onCapture: ((Data) -> Void)?
     private var onError: ((String) -> Void)?
+    private var onEnded: (() -> Void)?
     private let captureScreen: NSScreen  // screen this window lives on
 
-    init(onCapture: @escaping (Data) -> Void, onError: @escaping (String) -> Void) {
+    init(
+        onCapture: @escaping (Data) -> Void,
+        onError: @escaping (String) -> Void,
+        onEnded: @escaping () -> Void
+    ) {
         self.onCapture = onCapture
         self.onError = onError
+        self.onEnded = onEnded
         // Snapshot the screen at init time — don't re-query later
         self.captureScreen = NSScreen.main ?? NSScreen.screens[0]
         let screenFrame = captureScreen.frame
@@ -26,6 +32,14 @@ class CaptureWindow: NSWindow {
         selectionView.onSelect = { [self] viewRect in captureAfterClose(viewRect) }
         selectionView.onCancel = { [weak self] in self?.close() }
         contentView = selectionView
+    }
+
+    override func close() {
+        if let ended = onEnded {
+            onEnded = nil
+            ended()
+        }
+        super.close()
     }
 
     private func captureAfterClose(_ viewRect: NSRect) {

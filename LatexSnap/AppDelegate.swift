@@ -9,7 +9,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var captureWindow: CaptureWindow?
     private var settingsWindowController: NSWindowController?
     private var logWindowController: NSWindowController?
-    private var isProcessing = false
+    /// True while the region-selection overlay is open (blocks starting another capture until dismissed).
+    private var isCaptureOverlayActive = false
+    /// In-flight Claude API calls (menu bar icon stays busy until all finish).
+    private var pendingAPIRequests = 0
 
     private var log: LogManager { LogManager.shared }
 
@@ -62,8 +65,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func startCapture() {
-        guard !isProcessing else {
-            log.log("Already processing a capture, ignoring hotkey")
+        guard !isCaptureOverlayActive else {
+            log.log("Capture overlay already open — finish or cancel (Esc) first")
             return
         }
         guard KeychainHelper.apiKey != nil else {
@@ -72,12 +75,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         log.log("Hotkey triggered — opening capture overlay")
+        isCaptureOverlayActive = true
         captureWindow = CaptureWindow(
             onCapture: { [weak self] imageData in self?.processCapture(imageData) },
             onError:   { [weak self] msg in
                 self?.log.log("Capture error: \(msg)", level: .error)
-                self?.isProcessing = false
-                self?.setMenuBarIcon("function")
+                self?.syncMenuBarIconWithAPIActivity()
+            },
+            onEnded: { [weak self] in
+                self?.isCaptureOverlayActive = false
+                self?.captureWindow = nil
             }
         )
         NSApp.activate(ignoringOtherApps: true)
@@ -85,14 +92,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func processCapture(_ imageData: Data) {
-        isProcessing = true
-        setMenuBarIcon("ellipsis.circle")
+        pendingAPIRequests += 1
+        if pendingAPIRequests == 1 {
+            setMenuBarIcon("ellipsis.circle")
+        }
         log.log("Screenshot captured (\(imageData.count / 1024) KB) — calling Claude API…")
         Task {
             defer {
                 DispatchQueue.main.async {
-                    self.isProcessing = false
-                    self.setMenuBarIcon("function")
+                    self.pendingAPIRequests -= 1
+                    if self.pendingAPIRequests < 0 { self.pendingAPIRequests = 0 }
+                    self.syncMenuBarIconWithAPIActivity()
                 }
             }
             do {
@@ -112,6 +122,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     log.log("API error: \(error.localizedDescription)", level: .error)
                 }
             }
+        }
+    }
+
+    private func syncMenuBarIconWithAPIActivity() {
+        if pendingAPIRequests > 0 {
+            setMenuBarIcon("ellipsis.circle")
+        } else {
+            setMenuBarIcon("function")
         }
     }
 
