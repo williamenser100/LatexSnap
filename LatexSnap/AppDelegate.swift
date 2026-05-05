@@ -1,4 +1,5 @@
 import Cocoa
+import CoreGraphics
 import SwiftUI
 import ScreenCaptureKit
 
@@ -30,7 +31,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 await MainActor.run { log.log("Screen Recording permission: granted ✓", level: .success) }
             } catch {
                 await MainActor.run {
-                    log.log("Screen Recording permission: NOT granted — enable LatexSnap in System Settings → Privacy & Security → Screen & System Audio Recording, then restart.", level: .error)
+                    let preflight = CGPreflightScreenCaptureAccess()
+                    log.log("Screen Recording check failed (\(error.localizedDescription), preflight: \(preflight ? "true" : "false"))", level: .error)
+                    log.log("If permission is already enabled, ensure it is enabled for this exact app copy (/Applications) and relaunch app.", level: .info)
                 }
             }
         }
@@ -65,6 +68,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func startCapture() {
+        // Trigger system prompt when needed before starting capture.
+        if !CGPreflightScreenCaptureAccess() {
+            _ = CGRequestScreenCaptureAccess()
+            if !CGPreflightScreenCaptureAccess() {
+                log.log("Screen Recording not granted for this app copy. Open System Settings → Privacy & Security → Screen & System Audio Recording.", level: .error)
+                return
+            }
+        }
         guard !isCaptureOverlayActive else {
             log.log("Capture overlay already open — finish or cancel (Esc) first")
             return
