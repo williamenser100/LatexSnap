@@ -48,8 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupStatusItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
-            button.attributedTitle = xiTitle()
+            button.image = xiMenuBarImage()
+            button.attributedTitle = NSAttributedString(string: "")
             button.toolTip = "LatexSnap — ⌘⇧⌃L to capture"
+            button.setAccessibilityLabel("LatexSnap")
         }
         let menu = NSMenu()
         let captureItem = NSMenuItem(title: "Capture LaTeX  ⌘⇧⌃L", action: #selector(startCapture), keyEquivalent: "")
@@ -144,26 +146,80 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    private func xiTitle() -> NSAttributedString {
-        let font = NSFont(name: "TimesNewRomanPS-BoldMT", size: 17)
-            ?? NSFont(name: "Times New Roman Bold", size: 17)
-            ?? NSFont(name: "Times-Bold", size: 17)
-            ?? NSFont.systemFont(ofSize: 17, weight: .bold)
-        return NSAttributedString(string: "Ξ", attributes: [
-            .font: font,
-            .foregroundColor: NSColor.controlTextColor
-        ])
+    /// Drawn as a template image so layout matches SF Symbol items (size + vertical alignment in the status bar).
+    private func xiMenuBarImage() -> NSImage {
+        let canvas: CGFloat = 28
+        let image = NSImage(size: NSSize(width: canvas, height: canvas))
+        image.lockFocus()
+        defer { image.unlockFocus() }
+
+        if let ctx = NSGraphicsContext.current?.cgContext {
+            ctx.clear(CGRect(x: 0, y: 0, width: canvas, height: canvas))
+        }
+
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+
+        func font(at size: CGFloat) -> NSFont {
+            NSFont(name: "TimesNewRomanPS-BoldMT", size: size)
+                ?? NSFont(name: "Times New Roman Bold", size: size)
+                ?? NSFont(name: "Times-Bold", size: size)
+                ?? NSFont.systemFont(ofSize: size, weight: .bold)
+        }
+
+        let inner = canvas * 0.9
+        var lo: CGFloat = 10
+        var hi: CGFloat = 28
+        var best: CGFloat = lo
+        while hi - lo > 0.15 {
+            let mid = (lo + hi) * 0.5
+            let f = font(at: mid)
+            let attrs: [NSAttributedString.Key: Any] = [.font: f, .paragraphStyle: paragraph]
+            let b = ("Ξ" as NSString).boundingRect(
+                with: NSSize(width: inner, height: inner),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: attrs
+            )
+            if b.width <= inner && b.height <= inner {
+                best = mid
+                lo = mid
+            } else {
+                hi = mid
+            }
+        }
+
+        let f = font(at: best)
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: f,
+            .foregroundColor: NSColor.black,
+            .paragraphStyle: paragraph,
+        ]
+        let drawRect = NSRect(
+            x: (canvas - inner) * 0.5,
+            y: (canvas - inner) * 0.5,
+            width: inner,
+            height: inner
+        )
+        ("Ξ" as NSString).draw(with: drawRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attrs)
+
+        image.isTemplate = true
+        return image
+    }
+
+    private func statusBarSymbolConfiguration() -> NSImage.SymbolConfiguration {
+        NSImage.SymbolConfiguration(pointSize: 16, weight: .medium)
     }
 
     private func setMenuBarIcon(_ symbolName: String) {
         guard let button = statusItem.button else { return }
+        let symConfig = statusBarSymbolConfiguration()
         if symbolName == "function" {
-            button.image = nil
-            button.attributedTitle = xiTitle()
+            button.image = xiMenuBarImage()
         } else {
-            button.attributedTitle = NSAttributedString(string: "")
-            button.image = NSImage(systemSymbolName: symbolName, accessibilityDescription: "LatexSnap")
+            button.image = NSImage(systemSymbolName: symbolName, accessibilityDescription: "LatexSnap")?
+                .withSymbolConfiguration(symConfig)
         }
+        button.attributedTitle = NSAttributedString(string: "")
     }
 
     @objc func openLog() {
