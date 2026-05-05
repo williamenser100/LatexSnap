@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161A9B2044ED4D49A9AE2C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A4E5E2CB65C4918A9E7F3D3 /* Assets.xcassets */; };
 		3144B12BF1FE409F2AC52B58 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A45FC99271E2A226D9148AC /* SettingsView.swift */; };
 		5770ADEA853876C4E8D94E1A /* LogWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE34107EB964BD40E3A08E /* LogWindow.swift */; };
 		61E40D8E2DD5955FD2363B8A /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A971CB6D2E3778CA5DE476F /* LogManager.swift */; };
@@ -24,6 +25,7 @@
 		3A45FC99271E2A226D9148AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3D0AEE95885CB76ECABDA30B /* LatexSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatexSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A971CB6D2E3778CA5DE476F /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		6A4E5E2CB65C4918A9E7F3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70FDF4598A07E186D080A2E1 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		7C9841FE30E8FBC7D5071BE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D666F5302B362DE446FEA30 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
@@ -37,6 +39,7 @@
 		B941E8819023A380ACAF87EA /* LatexSnap */ = {
 			isa = PBXGroup;
 			children = (
+				6A4E5E2CB65C4918A9E7F3D3 /* Assets.xcassets */,
 				7C9841FE30E8FBC7D5071BE3 /* AppDelegate.swift */,
 				337FA7B5332C908EC9E853A1 /* CaptureWindow.swift */,
 				EF0774190000625EE85224EB /* ClaudeAPIClient.swift */,
@@ -74,6 +77,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAC3BE55BD07EC43FC311A15 /* Build configuration list for PBXNativeTarget "LatexSnap" */;
 			buildPhases = (
+				4198DDE2A4604B5290E29D4F /* Resources */,
 				BEFF0D1628769CA2D455CF8E /* Sources */,
 			);
 			buildRules = (
@@ -119,6 +123,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4198DDE2A4604B5290E29D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				161A9B2044ED4D49A9AE2C40 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BEFF0D1628769CA2D455CF8E /* Sources */ = {
