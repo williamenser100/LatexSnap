@@ -137,3 +137,14 @@ LatexSnap/
 
 - **Spotlight shows two LatexSnap apps**
   - One is usually `/Applications/LatexSnap.app`; the other is the Debug product under Xcode’s Derived Data. After `./build.sh`, prefer the Applications copy; they should match the same signing profile.
+
+- **App icon in Finder/Dock won’t update (but `icon-1024.png` in the repo is correct)**
+  - You might be looking at the **menu bar** symbol — that is still the old Ξ from code, not `AppIcon`.
+  - Otherwise macOS is caching icons: quit LatexSnap, run `./build.sh`, then:
+    ```bash
+    rm -rf "$HOME/Library/Caches/com.apple.iconservices.store"
+    killall Dock
+    killall Finder
+    ```
+  - If LatexSnap is **pinned in the Dock**, remove the icon from the Dock and open `/Applications/LatexSnap.app` again (pinned tiles keep the old artwork).
+  - Nuclear option: delete `~/Library/Developer/Xcode/DerivedData/LatexSnap-*`, then `./build.sh` again.
