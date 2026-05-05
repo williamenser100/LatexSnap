@@ -28,7 +28,7 @@ When conversion succeeds, the LaTeX is copied directly to your clipboard.
 ### 1) Clone
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/williamenser100/LatexSnap.git
 cd LatexSnap
 ```
 
