@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3144B12BF1FE409F2AC52B58 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A45FC99271E2A226D9148AC /* SettingsView.swift */; };
+		5770ADEA853876C4E8D94E1A /* LogWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE34107EB964BD40E3A08E /* LogWindow.swift */; };
+		61E40D8E2DD5955FD2363B8A /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A971CB6D2E3778CA5DE476F /* LogManager.swift */; };
+		6D5BCC23BCA46D84740214FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9841FE30E8FBC7D5071BE3 /* AppDelegate.swift */; };
+		96AC9716796C3A099748F96F /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D666F5302B362DE446FEA30 /* KeychainHelper.swift */; };
+		9A6047BEF5E9C24FBC34F7CD /* LatexSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9EE4F4956AF4D660022C48 /* LatexSnapApp.swift */; };
+		A2BBC65A7BD71FE056E0E751 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D09D0D02F89BD444B9D6F7 /* HotkeyManager.swift */; };
+		A59C7011323EBF1955E4C00C /* ClaudeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0774190000625EE85224EB /* ClaudeAPIClient.swift */; };
+		AF87A32B39C5B30B9AE45E29 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FDF4598A07E186D080A2E1 /* SelectionView.swift */; };
+		D57402FC41D5D95795AB3E50 /* CaptureWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FA7B5332C908EC9E853A1 /* CaptureWindow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		337FA7B5332C908EC9E853A1 /* CaptureWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureWindow.swift; sourceTree = "<group>"; };
+		3A45FC99271E2A226D9148AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3D0AEE95885CB76ECABDA30B /* LatexSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatexSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A971CB6D2E3778CA5DE476F /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		70FDF4598A07E186D080A2E1 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		7C9841FE30E8FBC7D5071BE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D666F5302B362DE446FEA30 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		A3BE34107EB964BD40E3A08E /* LogWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWindow.swift; sourceTree = "<group>"; };
+		CC9EE4F4956AF4D660022C48 /* LatexSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatexSnapApp.swift; sourceTree = "<group>"; };
+		D5D09D0D02F89BD444B9D6F7 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		EF0774190000625EE85224EB /* ClaudeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIClient.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		B941E8819023A380ACAF87EA /* LatexSnap */ = {
+			isa = PBXGroup;
+			children = (
+				7C9841FE30E8FBC7D5071BE3 /* AppDelegate.swift */,
+				337FA7B5332C908EC9E853A1 /* CaptureWindow.swift */,
+				EF0774190000625EE85224EB /* ClaudeAPIClient.swift */,
+				D5D09D0D02F89BD444B9D6F7 /* HotkeyManager.swift */,
+				9D666F5302B362DE446FEA30 /* KeychainHelper.swift */,
+				CC9EE4F4956AF4D660022C48 /* LatexSnapApp.swift */,
+				4A971CB6D2E3778CA5DE476F /* LogManager.swift */,
+				A3BE34107EB964BD40E3A08E /* LogWindow.swift */,
+				70FDF4598A07E186D080A2E1 /* SelectionView.swift */,
+				3A45FC99271E2A226D9148AC /* SettingsView.swift */,
+			);
+			path = LatexSnap;
+			sourceTree = "<group>";
+		};
+		ECFA78934E00A3D1C4D9B8B3 = {
+			isa = PBXGroup;
+			children = (
+				B941E8819023A380ACAF87EA /* LatexSnap */,
+				EFC1B36155F77A3B07BEA7CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFC1B36155F77A3B07BEA7CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D0AEE95885CB76ECABDA30B /* LatexSnap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CD475CE8B95A25550D7B2BA /* LatexSnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC3BE55BD07EC43FC311A15 /* Build configuration list for PBXNativeTarget "LatexSnap" */;
+			buildPhases = (
+				BEFF0D1628769CA2D455CF8E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LatexSnap;
+			packageProductDependencies = (
+			);
+			productName = LatexSnap;
+			productReference = 3D0AEE95885CB76ECABDA30B /* LatexSnap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5D9233E2D362A928C5FF33E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5CD475CE8B95A25550D7B2BA = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 4E3D6691F1E0F1EFFE3D1435 /* Build configuration list for PBXProject "LatexSnap" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = ECFA78934E00A3D1C4D9B8B3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EFC1B36155F77A3B07BEA7CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CD475CE8B95A25550D7B2BA /* LatexSnap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEFF0D1628769CA2D455CF8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D5BCC23BCA46D84740214FD /* AppDelegate.swift in Sources */,
+				D57402FC41D5D95795AB3E50 /* CaptureWindow.swift in Sources */,
+				A59C7011323EBF1955E4C00C /* ClaudeAPIClient.swift in Sources */,
+				A2BBC65A7BD71FE056E0E751 /* HotkeyManager.swift in Sources */,
+				96AC9716796C3A099748F96F /* KeychainHelper.swift in Sources */,
+				9A6047BEF5E9C24FBC34F7CD /* LatexSnapApp.swift in Sources */,
+				61E40D8E2DD5955FD2363B8A /* LogManager.swift in Sources */,
+				5770ADEA853876C4E8D94E1A /* LogWindow.swift in Sources */,
+				AF87A32B39C5B30B9AE45E29 /* SelectionView.swift in Sources */,
+				3144B12BF1FE409F2AC52B58 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5201C4E431BB2BD4D53C8289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = LatexSnap/LatexSnap.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = LatexSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latexsnap.app;
+				PRODUCT_NAME = LatexSnap;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		587CB20AB04272541F6F4EA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E69A1215BE038FF2A9F218AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = LatexSnap/LatexSnap.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = LatexSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latexsnap.app;
+				PRODUCT_NAME = LatexSnap;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		F4C17F5A961B237676847F18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E3D6691F1E0F1EFFE3D1435 /* Build configuration list for PBXProject "LatexSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C17F5A961B237676847F18 /* Debug */,
+				587CB20AB04272541F6F4EA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DAC3BE55BD07EC43FC311A15 /* Build configuration list for PBXNativeTarget "LatexSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E69A1215BE038FF2A9F218AE /* Debug */,
+				5201C4E431BB2BD4D53C8289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C5D9233E2D362A928C5FF33E /* Project object */;
+}
