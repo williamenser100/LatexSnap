@@ -1,6 +1,5 @@
 import Cocoa
 import SwiftUI
-import UserNotifications
 import ScreenCaptureKit
 
 @MainActor
@@ -17,7 +16,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         setupStatusItem()
-        requestNotificationPermission()
         hotkeyManager = HotkeyManager { [weak self] in
             DispatchQueue.main.async { self?.startCapture() }
         }
@@ -63,10 +61,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = menu
     }
 
-    private func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { _, _ in }
-    }
-
     @objc func startCapture() {
         guard !isProcessing else {
             log.log("Already processing a capture, ignoring hotkey")
@@ -82,7 +76,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             onCapture: { [weak self] imageData in self?.processCapture(imageData) },
             onError:   { [weak self] msg in
                 self?.log.log("Capture error: \(msg)", level: .error)
-                self?.sendNotification(title: "LatexSnap Error", body: msg)
                 self?.isProcessing = false
                 self?.setMenuBarIcon("function")
             }
@@ -112,13 +105,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         NSPasteboard.general.setString(latex, forType: .string)
                         log.log("LaTeX copied to clipboard ✓", level: .success)
                         log.log("  → \(latex.prefix(120))", level: .success)
-                        sendNotification(title: "LaTeX Copied", body: String(latex.prefix(80)))
                     }
                 }
             } catch {
                 await MainActor.run {
                     log.log("API error: \(error.localizedDescription)", level: .error)
-                    sendNotification(title: "LatexSnap Error", body: error.localizedDescription)
                 }
             }
         }
@@ -144,15 +135,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.attributedTitle = NSAttributedString(string: "")
             button.image = NSImage(systemSymbolName: symbolName, accessibilityDescription: "LatexSnap")
         }
-    }
-
-    private func sendNotification(title: String, body: String) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        UNUserNotificationCenter.current().add(
-            UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-        )
     }
 
     @objc func openLog() {
